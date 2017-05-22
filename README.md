@@ -1,6 +1,6 @@
-This a set of scrips that generally, use telnet(1) to reboot a modem if a set of
-network tests repeatedly fail. In particular it runs an infinite loop that, 
-every five minutes:
+This a set of scrips that generally, use telnet to reboot a modem if a set of
+network tests repeatedly fail. In particular watchdog.sh runs an infinite loop 
+that, every five minutes:
 
 - Performs three Internet connectivity tests: (1) a DNS resolution on 
   google.com, (2) a reverse DNS resolution on Google’s DNS server (8.8.8.8), and
@@ -10,7 +10,7 @@ every five minutes:
   - It increments a counter, and
   - It determines if the counter has exceeded a threshold (two, meaning that the 
     set of tests failed three times in a row). If so,
-    - It issues a modem reboot via telnet,
+    - It issues a modem reboot via telnet (using expect.sh),
     - It waits for three minutes for the modem to come back up, and
     - It increments a “reboot” count.
 - If there was no error (i.e., there is Internet connectivity), it determines if
